@@ -8,7 +8,20 @@ use Illuminate\Support\Facades\Http;
 class TranslateController extends Controller
 {
     public static function translate(Request $request){
+
         $q = $request->arama;
+        $detect_url = 'https://translo.p.rapidapi.com/api/v3/detect?text='.$q;
+
+        $detect_response = Http::withHeaders([
+            'X-RapidAPI-Key' => '083260f6e7msh76b3e8d1341225ep1d1b5djsn38b8a0fe5156',
+            'X-RapidAPI-Host' => 'translo.p.rapidapi.com'
+        ])->withBody('{
+             "text": "'.$q.'",
+            }',"raw")->get($detect_url);
+
+        $detect_result = $detect_response['lang'];
+
+
         $url = 'https://deep-translate1.p.rapidapi.com/language/translate/v2?key='.$q;
 
         $response = Http::withHeaders([
@@ -17,12 +30,13 @@ class TranslateController extends Controller
             'X-RapidAPI-Host' => 'deep-translate1.p.rapidapi.com'
         ])->withBody('{
              "q": "'.$q.'",
-             "source": "en",
+             "source": "'.$detect_result.'",
               "target": "tr"
             }',"raw")->post($url);
 
+
         $result = $response["data"]["translations"]["translatedText"];
 
-        return view('front.search.search', compact('result'));
+        return view('front.search.search', compact('result', 'detect_result'));
     }
 }

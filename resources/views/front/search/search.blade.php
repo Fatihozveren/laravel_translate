@@ -58,7 +58,7 @@
                 @csrf
                 <div class="inner-form">
                     <div class="input-field second-wrap">
-                            <input minlength="2" required id="search" name="arama" type="text" placeholder="Çevirisini yapmak istediğiniz kelimeyi giriniz." required/>
+                            <input minlength="2" required id="search" name="arama" type="text" placeholder="Hangi dil olursa olsun çevirmek istediğiniz cümleyi giriniz" required/>
                     </div>
                     <div class="input-field third-wrap">
                         <button class="btn-search" type="submit">
@@ -74,10 +74,16 @@
                 <div class="input-field second-wrap" style="text-align: center">
                     <br>
                     <hr style="width: 100%">
-                    <span>{{$result}}</span>
+                    <h4>{{$result}}</h4>
                 </div>
                 @endif
             </div>
+                @if(isset($detect_result))
+                <br>
+                    <div class="input-field second-wrap" style="border-style: ridge;border-width: 1px;padding:5px;text-align: center;margin-left: auto; margin-right: 0;" >
+                        <h6>Algılanan dil = {{$detect_result}}</h6>
+                    </div>
+                @endif
         </div>
     </div>
 @endsection
