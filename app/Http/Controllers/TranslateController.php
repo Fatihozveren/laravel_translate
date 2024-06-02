@@ -14,8 +14,8 @@ class TranslateController extends Controller
             $url = 'https://deep-translate1.p.rapidapi.com/language/translate/v2';
 
             $response = Http::withHeaders([
-                'X-RapidAPI-Host' => 'deep-translate1.p.rapidapi.com',
-                'X-RapidAPI-Key' => 'c124051fc5mshcbc605c6a5c7ee3p165f95jsn10cc1040b23c',
+                'X-RapidAPI-Host' => '#############################',
+                'X-RapidAPI-Key' => '#############################',
                 'content-type' => 'application/json',
             ])->withBody('{
                 "q": "'.$q.'",
@@ -29,8 +29,8 @@ class TranslateController extends Controller
 //
 //        $response = Http::withHeaders([
 //            'content-type' => 'application/json',
-//            'X-RapidAPI-Key' => 'd783f70ac8msh1d9637566ac541ap123b4ejsnea686ef4b1bf',
-//            'X-RapidAPI-Host' => 'deep-translate1.p.rapidapi.com'
+//            'X-RapidAPI-Key' => '#############################',
+//            'X-RapidAPI-Host' => '#############################'
 //        ])->withBody('{
 //             "q": "'.$q.'",
 //             "source": "'.$detect_result.'",
